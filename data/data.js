@@ -1,33 +1,32 @@
-// data/data.js
 const posts = [
     {
         title: "Post 1",
         content: "Contenuto del primo post",
-        image: "https://picsum.photos/200/300?random=1",
+        image: "/images/1-300x300.jpg",
         tags: ["tag1", "tag2"]
     },
     {
         title: "Post 2",
         content: "Contenuto del secondo post",
-        image: "https://picsum.photos/200/300?random=2",
+        image: "/images/2-300x300.jpg",
         tags: ["tag3", "tag4"]
     },
     {
         title: "Post 3",
         content: "Contenuto del terzo post",
-        image: "https://picsum.photos/200/300?random=3",
+        image: "/images/3-300x300.jpg",
         tags: ["tag5", "tag6"]
     },
     {
         title: "Post 4",
         content: "Contenuto del quarto post",
-        image: "https://picsum.photos/200/300?random=4",
+        image: "/images/4-300x300.jpg",
         tags: ["tag7", "tag8"]
     },
     {
         title: "Post 5",
         content: "Contenuto del quinto post",
-        image: "https://picsum.photos/200/300?random=5",
+        image: "/images/5-300x300.jpg",
         tags: ["tag9", "tag10"]
     }
 ];

@@ -1,16 +1,16 @@
-// app.js
 const express = require('express');
 const app = express();
 const postsController = require('./controllers/posts');
-const path = require('path');
 
 // Configurare gli asset statici
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
+// Rotte
 app.get('/', (req, res) => {
     res.send('<h1>Benvenuto nel mio blog!</h1>');
 });
 
+// Chiamare le funzioni dal controller dei post
 app.get('/posts', postsController.getPosts);
 
 // Gestire la favicon
