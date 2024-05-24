@@ -1,19 +1,26 @@
 const express = require('express');
 const app = express();
 const postsController = require('./controllers/posts');
+const path = require('path');
+
+// Middleware per il parsing del corpo della richiesta
+app.use(express.json());
 
 // Configurare gli asset statici
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotte
 app.get('/', (req, res) => {
     res.send('<h1>Benvenuto nel mio blog!</h1>');
 });
 
-// Chiamare le funzioni dal controller dei post
+// Rotta per ottenere i post
 app.get('/posts', postsController.getPosts);
 
-// Gestire la favicon
+// Rotta per aggiungere un nuovo post
+app.post('/posts', postsController.addPost);
+
+// Gestione della favicon
 app.get('/favicon.ico', (req, res) => {
     res.status(404).send('Favicon not found');
 });

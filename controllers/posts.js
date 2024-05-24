@@ -1,10 +1,12 @@
 const posts = require('../data/data.json');
 
+// Funzione per ottenere tutti i post
 exports.getPosts = (req, res) => {
-    
+    const accept = req.headers.accept;
+
     res.format({
-        'text/plain': function () {
-            res.send('Plain text response');
+        'application/json': function () {
+            res.json(posts);
         },
         'text/html': function () {
             let html = '<ul>';
@@ -19,11 +21,32 @@ exports.getPosts = (req, res) => {
             html += '</ul>';
             res.send(html);
         },
-        'application/json': function () {
-            res.json(posts);
-        },
         default: function () {
             res.status(406).send('Not Acceptable');
         }
     });
+};
+
+// Funzione per aggiungere un nuovo post
+exports.addPost = (req, res) => {
+    const { title, content, image, tags } = req.body;
+
+    // Verifica che tutti i campi siano presenti nella richiesta
+    if (!title || !content || !image || !tags) {
+        return res.status(400).json({ error: 'Assicurati di fornire tutti i campi necessari: title, content, image e tags' });
+    }
+
+    // Crea un nuovo post
+    const newPost = {
+        title,
+        content,
+        image,
+        tags
+    };
+
+    // Aggiungi il nuovo post all'array dei post
+    posts.push(newPost);
+
+    // Invia una risposta con il nuovo post aggiunto e lo status code 201 Created
+    res.status(201).json(newPost);
 };

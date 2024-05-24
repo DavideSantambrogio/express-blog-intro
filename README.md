@@ -6,7 +6,7 @@
 - [x] Configuriamo gli asset statici sull’applicazione in modo che si possano visualizzare le immagini associate ad ogni post.
 - [x] Testare le immagini scrivendo manualmente il link nel browser.
 Bonus
-- [] Nel stampare la ul in html, si potrebbe inserire anche un tag img, la descrizione e la lista dei tag
-- [] Spostiamo l’array dei post in un file separato da importare poi dentro il controller
-- [] Creare una rotta POST per aggiungere i post tramite Postman
+- [x] Nel stampare la ul in html, si potrebbe inserire anche un tag img, la descrizione e la lista dei tag
+- [x] Spostiamo l’array dei post in un file separato da importare poi dentro il controller
+- [x] Creare una rotta POST per aggiungere i post tramite Postman
 Buon lavoro!
