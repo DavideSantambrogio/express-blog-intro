@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const posts = require('../data/data.json');
 
 // Funzione per ottenere tutti i post
@@ -47,6 +49,15 @@ exports.addPost = (req, res) => {
     // Aggiungi il nuovo post all'array dei post
     posts.push(newPost);
 
-    // Invia una risposta con il nuovo post aggiunto e lo status code 201 Created
-    res.status(201).json(newPost);
+    // Scrivi i dati aggiornati nel file data.json
+    const dataFilePath = path.join(__dirname, '../data/data.json');
+    fs.writeFile(dataFilePath, JSON.stringify(posts, null, 2), (err) => {
+        if (err) {
+            console.error('Errore durante il salvataggio dei dati:', err);
+            return res.status(500).json({ error: 'Errore durante il salvataggio dei dati' });
+        }
+        console.log('Dati salvati correttamente.');
+        // Invia una risposta con il nuovo post aggiunto e lo status code 201 Created
+        res.status(201).json(newPost);
+    });
 };
