@@ -1,11 +1,24 @@
+// app.js
 const express = require('express');
 const app = express();
-const port = 3000;
+const postsController = require('./controllers/posts');
+const path = require('path');
+
+// Configurare gli asset statici
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.send('Benvenuto nel mio blog!');
+    res.send('<h1>Benvenuto nel mio blog!</h1>');
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+app.get('/posts', postsController.getPosts);
+
+// Gestire la favicon
+app.get('/favicon.ico', (req, res) => {
+    res.status(404).send('Favicon not found');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
